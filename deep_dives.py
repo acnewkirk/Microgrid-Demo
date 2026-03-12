@@ -69,9 +69,9 @@ stretch.
         """)
         # Vertically stacked at 90% width
         st.caption("Typical week")
-        _img("energy_flow_normal_week.png", 90)
+        _img("energy_flow_normal_week.png", 80)
         st.caption("Hardest week")
-        _img("energy_flow_hardest_week.png", 90)
+        _img("energy_flow_hardest_week.png", 80)
 
     # ── Section 2: Natural Gas Scale Economies ───────────────────
     with st.expander("Natural Gas Scale Economies"):
@@ -128,7 +128,7 @@ efficiency gain translates to a larger absolute cost difference. The mean
 reduction across all locations is approximately 17% (~7¢/kWh).
         """)
         tab_flow, tab_map = st.tabs([
-            "Power Flow Comparison", "DC Advantage Map"
+            "Power Flow Comparison", "DC Advantage Distribution"
         ])
         with tab_flow:
             _img("power_flow_comps.png", 60)
