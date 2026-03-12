@@ -58,9 +58,11 @@ def render_location_panel(h3_index: str, df: pd.DataFrame, gpu_price: float, use
 
     # ── Gas price slider ─────────────────────────────────────────
     st.markdown("")  # visual gap before controls
+    # Use the hex's actual state-specific gas price as the default
+    hex_gas_price = float(row.get("gas_price", DEFAULT_GAS_PRICE))
     gas_price = st.slider(
         "Natural gas price ($/MMBtu)",
-        min_value=1.0, max_value=8.0, value=DEFAULT_GAS_PRICE, step=0.25,
+        min_value=1.0, max_value=15.0, value=hex_gas_price, step=0.25,
         format="$%.2f",
         key="gas_price_slider",
     )
