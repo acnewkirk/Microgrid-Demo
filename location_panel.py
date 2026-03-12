@@ -64,7 +64,7 @@ def render_location_panel(h3_index: str, df: pd.DataFrame, gpu_price: float, use
         "Natural gas price ($/MMBtu)",
         min_value=1.0, max_value=15.0, value=hex_gas_price, step=0.25,
         format="$%.2f",
-        key="gas_price_slider",
+        key=f"gas_price_slider_{h3_index}",
     )
 
     # ── Recompute NG LCOE ────────────────────────────────────────
