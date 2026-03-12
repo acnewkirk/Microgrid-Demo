@@ -1,4 +1,3 @@
 __pycache__/
 *.pyc
 .streamlit/
-data/final_lcoe_results_complete2.csv
