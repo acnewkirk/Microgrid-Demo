@@ -1,0 +1,7 @@
+streamlit
+plotly
+h3>=4.0
+pandas
+numpy
+reverse_geocoder
+qrcode[pil]
