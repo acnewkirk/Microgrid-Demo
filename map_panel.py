@@ -237,6 +237,15 @@ def render_map_panel(df_all: pd.DataFrame, geojson: dict, centroids: pd.DataFram
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
     )
 
+    # ── Hex count summary ───────────────────────────────────────
+    counts = df["lowest_cost"].value_counts()
+    total = len(df)
+    parts = []
+    for tech, mcfg in TECH_MARKERS.items():
+        n = counts.get(tech, 0)
+        parts.append(f"**{tech}**: {n} ({n*100/total:.0f}%)")
+    st.caption("Lowest cost: " + " · ".join(parts))
+
     # ── Display and capture click ────────────────────────────────
     event = st.plotly_chart(fig, use_container_width=True, on_select="rerun", key="map")
 
