@@ -234,7 +234,7 @@ def render_map_panel(df_all: pd.DataFrame, geojson: dict, centroids: pd.DataFram
         mapbox_zoom=zoom,
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
         height=550,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
     )
 
     # ── Display and capture click ────────────────────────────────
