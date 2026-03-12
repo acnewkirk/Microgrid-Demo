@@ -118,12 +118,12 @@ def render_location_panel(h3_index: str, df: pd.DataFrame, gpu_price: float, use
         barmode="stack",
         yaxis_title="LCOE ($/kWh)",
         yaxis_tickformat="$.2f",
-        height=350,
-        margin={"t": 10, "b": 30},
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        height=380,
+        margin={"t": 5, "b": 60, "l": 50, "r": 10},
+        legend=dict(orientation="h", yanchor="top", y=-0.12, xanchor="center", x=0.5),
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     # ── NG config detail ─────────────────────────────────────────
     if ng_result["base_lcoe"] is not None:
