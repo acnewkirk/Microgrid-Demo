@@ -79,7 +79,7 @@ def render_deep_dives():
             "F-class, and H-class (large-scale, beyond this x-axis bound).\n\n"
             "At small facility sizes (< 50 MW), only aeroderivative turbines are "
             "feasible, with higher per-kW costs and lower thermal efficiency. "
-            "Combined-cycle configurations become available above ~100 MW and achieve "
+            "Combined-cycle configurations become cost feasible above ~100 MW and achieve "
             "substantially lower LCOE. Horizontal reference lines show DC-coupled and "
             "AC-coupled solar LCOE at the same location for comparison."
         )
