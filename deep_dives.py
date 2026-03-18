@@ -116,7 +116,31 @@ and depend on local solar resource, cooling performance, and grid pricing.
         with tab_wash:
             _img("uptime_sensitivity_wash.png", 55)
 
-    # ── Section 4: DC vs. AC Coupling ────────────────────────────
+    # ── Section 4: The Speed Premium ─────────────────────────────
+    with st.expander("Why Deployment Speed Dominates"):
+        st.markdown("""
+Different power architectures take different amounts of time to build.
+Solar+storage microgrids can be permitted and constructed in roughly 2
+years. Natural gas plants require approximately 3 years to construct under optimistic
+assumptions about turbine delivery. Grid interconnection typically takes
+3–5+ years depending on region.
+
+During construction, the facility's GPUs sit idle. At H100-class spot
+rental rates at the time of analysis (~$2.40/GPU-hour in year-zero
+dollars), a 100,000-GPU facility foregoes roughly **$5 billion in
+present-value revenue** for each 3 years of additional delay. This
+opportunity cost dwarfs the per-kWh energy cost differences between
+architectures.
+
+The plot below shows the GPU rental value at which a firm would be
+indifferent between a DC solar microgrid and grid interconnection at
+each location. In most of the continental U.S., the indifference value
+falls well below $2.40/hr, meaning this result persists even under
+conservative assumptions about what a chip-hour is worth.
+        """)
+        _img("gpu_indifference.png", 70)
+
+    # ── Section 5: DC vs. AC Coupling ────────────────────────────
     with st.expander("DC vs. AC Coupling"):
         st.markdown("""
 DC-coupled microgrids reduce LCOE relative to AC-coupled systems by
