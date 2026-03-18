@@ -51,8 +51,8 @@ storage on a shared DC bus. During the day, solar generation powers the
 facility directly and charges the battery with any surplus. At night and
 during intermittent cloud cover, the battery discharges to maintain
 supply. The system is sized so that the battery can carry the facility
-through extended low-irradiance periods, targeting 99% annual energy
-service.
+through extended low-irradiance periods, meeting 99% annual energy
+service across full system lifespan.
 
 These plots show one week of simulated net power flows on the main DC
 distribution bus, by hour, for a 31 MW facility in Colorado. Each
@@ -76,13 +76,13 @@ stretch.
     # ── Section 2: Natural Gas Scale Economies ───────────────────
     with st.expander("Natural Gas Scale Economies"):
         st.markdown("""
-Natural gas LCOE as a function of facility size, showing all feasible
-turbine configurations evaluated by the model. Each marker represents a
+Natural gas LCOE as a function of facility size, showing optimal 
+plant configurations as evaluated by the model. Each marker represents a
 turbine class: aeroderivatives (small-scale, simple cycle only),
-F-class, and H-class (large-scale, simple or combined cycle).
+F-class, and H-class (large-scale, beyond this x-axis bound).
 
 At small facility sizes (< 50 MW), only aeroderivative turbines are
-feasible, with higher per-kW costs and lower electrical efficiency.
+feasible, with higher per-kW costs and lower thermal efficiency.
 Combined-cycle configurations become available above ~100 MW and achieve
 substantially lower LCOE. Horizontal reference lines show DC-coupled and
 AC-coupled solar LCOE at the same location for comparison.
@@ -98,12 +98,11 @@ fraction of the facility's annual energy is provided by the microgrid
 rather than the grid; the dashed line shows the local grid electricity
 price for reference.
 
-DC solar LCOE is relatively flat up to ~75–90% islanded share, then
-rises steeply as the system must be oversized to cover the last few
-percent of energy during worst-case weather. Natural gas LCOE decreases
+DC solar LCOE is relatively flat as utilization initially increases, then
+rises steeply as the system must be oversized to maintain reliability. Natural gas LCOE decreases
 with utilization as fixed capital costs are spread over more energy. The
-crossover point — where the two curves intersect — varies by location
-and depends on local solar resource and grid pricing.
+crossover points vary by location
+and depend on local solar resource, cooling performance, and grid pricing.
         """)
         tab_socal, tab_houston, tab_va, tab_wash = st.tabs([
             "Southern California", "Houston", "Virginia", "Washington"
