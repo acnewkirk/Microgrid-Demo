@@ -127,8 +127,8 @@ def render_deep_dives():
             "The plot below shows the GPU rental value at which a firm would be "
             "indifferent between a DC solar microgrid and grid interconnection at "
             "each location. In most of the continental U.S., the indifference value "
-            "falls well below \\$2.40/hr, meaning this result persists even under "
-            "conservative assumptions about what a chip-hour is worth."
+            "falls well below \\$2.40/hr, meaning these results persist even under "
+            "conservative assumptions about the value of a chip-hour."
         )
         _img("gpu_indifference.png", 70)
 
