@@ -45,28 +45,25 @@ def render_deep_dives():
 
     # ── Section 1: Solar Microgrid Operations ────────────────────
     with st.expander("How Does a Solar Microgrid Power a Data Center?"):
-        st.markdown("""
-A DC-coupled solar microgrid pairs photovoltaic arrays with battery
-storage on a shared DC bus. During the day, solar generation powers the
-facility directly and charges the battery with any surplus. At night and
-during intermittent cloud cover, the battery discharges to maintain
-supply. The system is sized so that the battery can carry the facility
-through extended low-irradiance periods, meeting 99% annual energy
-service across full system lifespan.
-
-These plots show one week of simulated net power flows on the main DC
-distribution bus, by hour, for a 31 MW facility in Colorado. Each
-stacked area represents the hourly contribution of a source (solar,
-battery discharge) or sink (facility load, battery charge, curtailment)
-at the bus.
-
-**Top — typical week:** Solar consistently exceeds demand. The battery
-stays nearly full, absorbing midday surplus and discharging overnight.
-
-**Bottom — hardest week of the year:** An extended low-irradiance period
-draws the battery down. Unmet load appears at the tail end of the cloudy
-stretch.
-        """)
+        st.markdown(
+            "A DC-coupled solar microgrid pairs photovoltaic arrays with battery "
+            "storage on a shared DC bus. During the day, solar generation powers the "
+            "facility directly and charges the battery with any surplus. At night and "
+            "during intermittent cloud cover, the battery discharges to maintain "
+            "supply. The system is sized so that the battery can carry the facility "
+            "through extended low-irradiance periods, meeting 99% annual energy "
+            "service across full system lifespan.\n\n"
+            "These plots show one week of simulated net power flows on the main DC "
+            "distribution bus, by hour, for a 31 MW facility in Colorado. Each "
+            "stacked area represents the hourly contribution of a source (solar, "
+            "battery discharge) or sink (facility load, battery charge, curtailment) "
+            "at the bus.\n\n"
+            "**Top — typical week:** Solar consistently exceeds demand. The battery "
+            "stays nearly full, absorbing midday surplus and discharging overnight.\n\n"
+            "**Bottom — hardest week of the year:** An extended low-irradiance period "
+            "draws the battery down. Unmet load appears at the tail end of the cloudy "
+            "stretch."
+        )
         # Vertically stacked at 90% width
         st.caption("Typical week")
         _img("energy_flow_normal_week.png", 80)
@@ -75,35 +72,33 @@ stretch.
 
     # ── Section 2: Natural Gas Scale Economies ───────────────────
     with st.expander("Natural Gas Scale Economies"):
-        st.markdown("""
-Natural gas LCOE as a function of facility size, showing optimal 
-plant configurations as evaluated by the model. Each marker represents a
-turbine class: aeroderivatives (small-scale, simple cycle only),
-F-class, and H-class (large-scale, beyond this x-axis bound).
-
-At small facility sizes (< 50 MW), only aeroderivative turbines are
-feasible, with higher per-kW costs and lower thermal efficiency.
-Combined-cycle configurations become available above ~100 MW and achieve
-substantially lower LCOE. Horizontal reference lines show DC-coupled and
-AC-coupled solar LCOE at the same location for comparison.
-        """)
+        st.markdown(
+            "Natural gas LCOE as a function of facility size, showing optimal "
+            "plant configurations as evaluated by the model. Each marker represents a "
+            "turbine class: aeroderivatives (small-scale, simple cycle only), "
+            "F-class, and H-class (large-scale, beyond this x-axis bound).\n\n"
+            "At small facility sizes (< 50 MW), only aeroderivative turbines are "
+            "feasible, with higher per-kW costs and lower thermal efficiency. "
+            "Combined-cycle configurations become available above ~100 MW and achieve "
+            "substantially lower LCOE. Horizontal reference lines show DC-coupled and "
+            "AC-coupled solar LCOE at the same location for comparison."
+        )
         _img("ng_scaling.png", 70)
 
     # ── Section 3: The Cost of Reliability ────────────────────────
     with st.expander("The Cost of Reliability"):
-        st.markdown("""
-LCOE vs. islanded share of annual energy for DC solar and natural gas
-microgrids at four representative locations. The x-axis shows what
-fraction of the facility's annual energy is provided by the microgrid
-rather than the grid; the dashed line shows the local grid electricity
-price for reference.
-
-DC solar LCOE is relatively flat as utilization initially increases, then
-rises steeply as the system must be oversized to maintain reliability. Natural gas LCOE decreases
-with utilization as fixed capital costs are spread over more energy. The
-crossover points vary by location
-and depend on local solar resource, cooling performance, and grid pricing.
-        """)
+        st.markdown(
+            "LCOE vs. islanded share of annual energy for DC solar and natural gas "
+            "microgrids at four representative locations. The x-axis shows what "
+            "fraction of the facility's annual energy is provided by the microgrid "
+            "rather than the grid; the dashed line shows the local grid electricity "
+            "price for reference.\n\n"
+            "DC solar LCOE is relatively flat as utilization initially increases, then "
+            "rises steeply as the system must be oversized to maintain reliability. "
+            "Natural gas LCOE decreases with utilization as fixed capital costs are "
+            "spread over more energy. The crossover points vary by location and depend "
+            "on local solar resource, cooling performance, and grid pricing."
+        )
         tab_socal, tab_houston, tab_va, tab_wash = st.tabs([
             "Southern California", "Houston", "Virginia", "Washington"
         ])
@@ -117,39 +112,37 @@ and depend on local solar resource, cooling performance, and grid pricing.
             _img("uptime_sensitivity_wash.png", 55)
 
     # ── Section 4: The Speed Premium ─────────────────────────────
-    with st.expander("Why Deployment Speed Dominates"):
-        st.markdown("""
-Different power architectures take different amounts of time to build.
-Solar+storage microgrids can be permitted and constructed in roughly 2
-years. Natural gas plants require approximately 3 years to construct under optimistic
-assumptions about turbine delivery. Grid interconnection typically takes
-3–5+ years depending on region.
-
-During construction, the facility's GPUs sit idle. At H100-class spot
-rental rates at the time of analysis (~$2.40/GPU-hour in year-zero
-dollars), a 100,000-GPU facility foregoes roughly **$5 billion in
-present-value revenue** for each 3 years of additional delay. This
-opportunity cost dwarfs the per-kWh energy cost differences between
-architectures.
-
-The plot below shows the GPU rental value at which a firm would be
-indifferent between a DC solar microgrid and grid interconnection at
-each location. In most of the continental U.S., the indifference value
-falls well below $2.40/hr, meaning this result persists even under
-conservative assumptions about what a chip-hour is worth.
-        """)
+    with st.expander("Speed to Power Value"):
+        st.markdown(
+            "Different power architectures take different amounts of time to build. "
+            "Solar+storage microgrids can be permitted and constructed in roughly 2 "
+            "years. Natural gas plants require approximately 3 years to construct "
+            "under optimistic assumptions about turbine delivery. Grid interconnection "
+            "typically takes 3\u20135+ years depending on region.\n\n"
+            "During construction, the facility's GPUs sit idle. At H100-class spot "
+            "rental rates at the time of analysis (~\\$2.40/GPU-hour in year-zero "
+            "dollars), a 100,000-GPU facility foregoes roughly **\\$5 billion in "
+            "present-value revenue** for each 3 years of additional delay. This "
+            "opportunity cost dwarfs the per-kWh energy cost differences between "
+            "architectures.\n\n"
+            "The plot below shows the GPU rental value at which a firm would be "
+            "indifferent between a DC solar microgrid and grid interconnection at "
+            "each location. In most of the continental U.S., the indifference value "
+            "falls well below \\$2.40/hr, meaning this result persists even under "
+            "conservative assumptions about what a chip-hour is worth."
+        )
         _img("gpu_indifference.png", 70)
 
     # ── Section 5: DC vs. AC Coupling ────────────────────────────
     with st.expander("DC vs. AC Coupling"):
-        st.markdown("""
-DC-coupled microgrids reduce LCOE relative to AC-coupled systems by
-eliminating power conversion stages between PV panels, battery, and IT
-load. The advantage varies geographically: locations with lower solar
-resource require larger systems to meet the same load, so the per-kWh
-efficiency gain translates to a larger absolute cost difference. The mean
-reduction across all locations is approximately 17% (~7¢/kWh).
-        """)
+        st.markdown(
+            "DC-coupled microgrids reduce LCOE relative to AC-coupled systems by "
+            "eliminating power conversion stages between PV panels, battery, and IT "
+            "load. The advantage varies geographically: locations with lower solar "
+            "resource require larger systems to meet the same load, so the per-kWh "
+            "efficiency gain translates to a larger absolute cost difference. The mean "
+            "reduction across all locations is approximately 17% (~7\u00a2/kWh)."
+        )
         tab_flow, tab_map = st.tabs([
             "Power Flow Comparison", "DC Advantage Distribution"
         ])
