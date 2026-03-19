@@ -92,7 +92,7 @@ def get_display_col(arch_prefix: str, use_total: bool) -> str:
 
 # ── View modes ───────────────────────────────────────────────────────
 
-VIEW_MODES = ["Lowest Cost", "DC Solar", "Natural Gas", "Grid", "Δ (NG − DC)"]
+VIEW_MODES = ["Lowest Cost", "DC Solar", "Natural Gas", "Grid", "NG − DC Cost"]
 
 
 def _lcoe_label(use_total: bool) -> str:
@@ -127,7 +127,17 @@ def render_map_panel(df_all: pd.DataFrame, geojson: dict, centroids: pd.DataFram
             gpu_price = GPU_HOUR_BASELINE  # doesn't matter for base LCOE
 
     with col_view:
-        view_mode = st.radio("View", VIEW_MODES, horizontal=True)
+        view_mode = st.radio(
+            "View", VIEW_MODES, horizontal=True,
+            help=(
+                "**NG − DC Cost** shows the difference between Natural Gas Microgrid "
+                "and DC Solar Microgrid LCOE at each location. Positive (red) means "
+                "natural gas is more expensive; negative (blue) means DC solar is "
+                "more expensive. Click a hex to open the location panel, where you "
+                "can adjust the natural gas price with a slider to see how it shifts "
+                "the comparison."
+            ),
+        )
 
     # ── Prepare data ─────────────────────────────────────────────
     df = adjust_lcoe_for_gpu_price(df_all, gpu_price)
@@ -224,8 +234,8 @@ def render_map_panel(df_all: pd.DataFrame, geojson: dict, centroids: pd.DataFram
             zmid=0,
             marker_opacity=0.7,
             marker_line_width=0.3,
-            colorbar=dict(title="NG − DC ($/kWh)", tickformat="$.3f"),
-            hovertemplate="NG − DC: $%{z:.3f}/kWh<extra></extra>",
+            colorbar=dict(title="NG − DC Cost ($/kWh)", tickformat="$.3f"),
+            hovertemplate="NG − DC Cost: $%{z:.3f}/kWh<extra></extra>",
         ))
 
     fig.update_layout(
