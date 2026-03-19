@@ -130,12 +130,18 @@ def render_map_panel(df_all: pd.DataFrame, geojson: dict, centroids: pd.DataFram
         view_mode = st.radio(
             "View", VIEW_MODES, horizontal=True,
             help=(
-                "**NG − DC Cost** shows the difference between Natural Gas Microgrid "
-                "and DC Solar Microgrid LCOE at each location. Positive (red) means "
-                "natural gas is more expensive; negative (blue) means DC solar is "
-                "more expensive. Click a hex to open the location panel, where you "
-                "can adjust the natural gas price with a slider to see how it shifts "
-                "the comparison."
+                "All views reflect the **Show** selection above — baseline LCOE "
+                "or LCOE + Value of Lost Compute (with adjustable GPU $/hr).\n\n"
+                "**Lowest Cost** displays the lowest-cost architecture at each "
+                "location under the selected cost assumptions.\n\n"
+                "**DC Solar**, **Natural Gas**, and **Grid** show the absolute "
+                "LCOE for that single architecture.\n\n"
+                "**NG − DC Cost** shows the difference between Natural Gas "
+                "Microgrid and DC Solar Microgrid LCOE. Positive (red) means "
+                "natural gas is more expensive; negative (blue) means DC solar "
+                "is more expensive. Click a hex to open the location panel, "
+                "where you can adjust the natural gas price with a slider to "
+                "see how it shifts the comparison."
             ),
         )
 
